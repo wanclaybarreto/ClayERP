@@ -1,0 +1,16 @@
+# Build e IDEs
+.gradle/
+build/
+out/
+.idea/
+*.iml
+
+# Node / Frontend
+node_modules/
+dist/
+.env
+.vscode/
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
