@@ -1,0 +1,38 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 001-create-restaurant-table
+      author: Wanclay Barreto
+
+      changes:
+
+        - createTable:
+            tableName: restaurant_table
+
+            columns:
+
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: number
+                  type: INT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: qr_code
+                  type: VARCHAR(255)
+
+              - column:
+                  name: active
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
