@@ -1,4 +1,4 @@
-package com.clayerp.core;
+package com.clayerp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
