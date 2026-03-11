@@ -10,6 +10,15 @@ spring:
     hibernate:
       ddl-auto: none
 
+  messages:
+    basename: messages/messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+
+  mvc:
+    locale: pt_BR
+    locale-resolver: fixed
+
   liquibase:
     change-log: classpath:db/changelog/master.yaml
 
