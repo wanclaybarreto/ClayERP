@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private MessageService messageService;
+    private final MessageService messageService;
 
     public GlobalExceptionHandler(MessageService messageService) {
         this.messageService = messageService;

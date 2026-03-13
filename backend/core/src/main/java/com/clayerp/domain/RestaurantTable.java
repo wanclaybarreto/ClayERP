@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "restaurant_table")
-public class TableRestaurant {
+public class RestaurantTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class TableRestaurant {
     private Boolean active;
 
 
-    public TableRestaurant() {}
+    public RestaurantTable() {}
 
 
     @PrePersist //Assinatura que gera evento JPA que roda antes do objeto ser salvo no banco.

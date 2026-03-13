@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HealthService {
 
-    private MessageService messageService;
+    private final MessageService messageService;
 
     public HealthService(MessageService messageService) {
         this.messageService = messageService;
