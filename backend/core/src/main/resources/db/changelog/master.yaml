@@ -4,3 +4,5 @@ databaseChangeLog:
       file: db/changelog/001-create-restaurant-table.yaml
   - include:
       file: db/changelog/002-create-company-and-establishment.yaml
+  - include:
+      file: db/changelog/003-update-restaurant-table.yaml

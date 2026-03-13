@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 003-update-restaurant-table
+      author: Wanclay Barreto
+
+      changes:
+        - addColumn:
+            tableName: restaurant_table
+            columns:
+
+              - column:
+                  name: establishment_id
+                  type: BIGINT
+
+        - addForeignKeyConstraint:
+            baseTableName: restaurant_table
+            baseColumnNames: establishment_id
+            referencedTableName: establishment
+            referencedColumnNames: id
+            constraintName: fk_table_establishment
