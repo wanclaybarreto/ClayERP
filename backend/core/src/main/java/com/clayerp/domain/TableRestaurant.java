@@ -2,6 +2,8 @@ package com.clayerp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "restaurant_table")
 public class TableRestaurant {
@@ -22,6 +24,14 @@ public class TableRestaurant {
 
 
     public TableRestaurant() {}
+
+
+    @PrePersist //Assinatura que gera evento JPA que roda antes do objeto ser salvo no banco.
+    public void generateQrCode() {
+        if (qrCode == null) {
+            qrCode = UUID.randomUUID().toString(); //Gera e seta identificadores únicos e seguros.
+        }
+    }
 
 
     public Long getId() {
