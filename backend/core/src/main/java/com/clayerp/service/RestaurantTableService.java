@@ -29,9 +29,24 @@ public class RestaurantTableService {
                 .findById(crtRequest.getEstablishmentId())
                 .orElseThrow(() -> new RuntimeException(messageService.get("restaurant.notfound")));
 
+        boolean exists = restaurantTableRepository.existsByEstablishmentIdAndNumber(
+                establishment.getId(),
+                crtRequest.getNumber()
+        );
+
+        if (exists) {
+            throw new RuntimeException(
+                    messageService.get(
+                            "restaurant.table.number.already.exists",
+                            new String[] {crtRequest.getNumber().toString()}
+                    )
+            );
+        }
+
         RestaurantTable table = new RestaurantTable();
         table.setEstablishment(establishment);
         table.setNumber(crtRequest.getNumber());
+        table.setActive(true);
 
         restaurantTableRepository.save(table);
 

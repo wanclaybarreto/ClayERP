@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "restaurant_table")
-public class RestaurantTable {
+public class RestaurantTable extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class RestaurantTable {
 
 
     @PrePersist //Assinatura que gera evento JPA que roda antes do objeto ser salvo no banco.
-    public void generateQrCode() {
+    protected void generateQrCode() {
         if (qrCode == null) {
             qrCode = UUID.randomUUID().toString(); //Gera e seta identificadores únicos e seguros.
         }

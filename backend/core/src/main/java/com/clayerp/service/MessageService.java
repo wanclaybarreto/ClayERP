@@ -18,4 +18,8 @@ public class MessageService {
         return messageSource.getMessage(key, null, Locale.getDefault());
     }
 
+    public String get(String key, String[] args) {
+        return messageSource.getMessage(key, args, Locale.getDefault());
+    }
+
 }

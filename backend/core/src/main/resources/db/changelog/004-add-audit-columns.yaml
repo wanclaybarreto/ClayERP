@@ -1,0 +1,76 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 004-1-add-audit-columns-company
+      author: Wanclay Barreto
+      changes:
+
+        - addColumn:
+            tableName: company
+            columns:
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: 004-2-add-audit-columns-establishment
+      author: Wanclay Barreto
+      changes:
+
+        - addColumn:
+            tableName: establishment
+            columns:
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 004-3-remove-old-audit-columns-restaurant_table
+      author: Wanclay Barreto
+      changes:
+        - dropColumn:
+            tableName: restaurant_table
+            columns:
+
+              - column:
+                  name: created_at
+
+
+  - changeSet:
+      id: 004-4-add-audit-columns-restaurant_table
+      author: Wanclay Barreto
+      changes:
+        - addColumn:
+            tableName: restaurant_table
+            columns:
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false

@@ -1,0 +1,22 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 005-1-add-unique-constraint-to-restaurant-table
+      author: Wanclay Barreto
+      changes:
+
+        - addUniqueConstraint:
+            tableName: restaurant_table
+            columnNames: establishment_id, number
+            constraintName: uk_restaurant_table_number_establishment
+
+
+  - changeSet:
+      id: 005-2-add-unique-constraint-to-restaurant-table
+      author: Wanclay Barreto
+      changes:
+
+        - addUniqueConstraint:
+            tableName: restaurant_table
+            columnNames: qr_code
+            constraintName: uk_retaurant_table_qr_code

@@ -1,5 +1,6 @@
 package com.clayerp.controller;
 
+import com.clayerp.dto.ApiResponse;
 import com.clayerp.dto.CreateRestaurantTableRequest;
 import com.clayerp.dto.CreateRestaurantTableResponse;
 import com.clayerp.service.RestaurantTableService;
@@ -19,8 +20,8 @@ public class RestaurantTableController {
     }
 
     @PostMapping
-    public CreateRestaurantTableResponse create(@RequestBody CreateRestaurantTableRequest crtRequest) {
-        return restaurantTableService.createRestaurantTable(crtRequest);
+    public ApiResponse<CreateRestaurantTableResponse> create(@RequestBody CreateRestaurantTableRequest crtRequest) {
+        return new ApiResponse<>(true, restaurantTableService.createRestaurantTable(crtRequest));
     }
 
 }
