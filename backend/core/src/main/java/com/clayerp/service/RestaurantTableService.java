@@ -4,6 +4,8 @@ import com.clayerp.domain.Establishment;
 import com.clayerp.domain.RestaurantTable;
 import com.clayerp.dto.CreateRestaurantTableRequest;
 import com.clayerp.dto.CreateRestaurantTableResponse;
+import com.clayerp.exception.NotFoundException;
+import com.clayerp.exception.RuleViolationException;
 import com.clayerp.repository.EstablishmentRepository;
 import com.clayerp.repository.RestaurantTableRepository;
 import org.springframework.stereotype.Service;
@@ -13,21 +15,19 @@ public class RestaurantTableService {
 
     private final RestaurantTableRepository restaurantTableRepository;
     private final EstablishmentRepository establishmentRepository;
-    private final MessageService messageService;
 
     public RestaurantTableService(
-            RestaurantTableRepository restaurantTableRepository, EstablishmentRepository establishmentRepository,
-            MessageService messageService
+            RestaurantTableRepository restaurantTableRepository,
+            EstablishmentRepository establishmentRepository
     ) {
         this.restaurantTableRepository = restaurantTableRepository;
         this.establishmentRepository = establishmentRepository;
-        this.messageService = messageService;
     }
 
     public CreateRestaurantTableResponse createRestaurantTable(CreateRestaurantTableRequest crtRequest) {
         Establishment establishment = establishmentRepository
                 .findById(crtRequest.getEstablishmentId())
-                .orElseThrow(() -> new RuntimeException(messageService.get("restaurant.notfound")));
+                .orElseThrow(() -> new NotFoundException("restaurant.notfound"));
 
         boolean exists = restaurantTableRepository.existsByEstablishmentIdAndNumber(
                 establishment.getId(),
@@ -35,11 +35,9 @@ public class RestaurantTableService {
         );
 
         if (exists) {
-            throw new RuntimeException(
-                    messageService.get(
-                            "restaurant.table.number.already.exists",
-                            new String[] {crtRequest.getNumber().toString()}
-                    )
+            throw new RuleViolationException(
+                    "restaurant.table.number.already.exists",
+                    crtRequest.getNumber()
             );
         }
 
