@@ -2,9 +2,9 @@ spring:
   application:
     name: ClayERP Core
   datasource:
-    url: jdbc:postgresql://localhost:5432/clayerp-dev
+    url: jdbc:postgresql://localhost:5432/clayerp-local
     username: clayerp
-    password: dev-123
+    password: clay-123
 
   jpa:
     hibernate:

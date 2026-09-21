@@ -7,9 +7,9 @@ services:
     container_name: clayerp-postgres
 
     environment:
-      POSTGRES_DB: clayerp-dev
+      POSTGRES_DB: clayerp-local
       POSTGRES_USER: clayerp
-      POSTGRES_PASSWORD: dev-123
+      POSTGRES_PASSWORD: clay-123
 
     ports:
       - "5432:5432"
