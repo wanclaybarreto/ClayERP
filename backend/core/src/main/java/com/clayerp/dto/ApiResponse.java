@@ -1,17 +1,17 @@
 package com.clayerp.dto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class ApiResponse<T> {
 
     private boolean success;
     private T data;
-    private LocalDateTime timestamp;
+    private Instant timestamp;
 
     public ApiResponse(boolean success, T data) {
         this.success = success;
         this.data = data;
-        timestamp = LocalDateTime.now();
+        timestamp = Instant.now();
     }
 
     public boolean isSuccess() {
@@ -22,7 +22,7 @@ public class ApiResponse<T> {
         return data;
     }
 
-    public LocalDateTime getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 }

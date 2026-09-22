@@ -1,17 +1,17 @@
 package com.clayerp.dto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class ErrorResponse {
 
     private boolean success;
     private String message;
-    private LocalDateTime timestamp;
+    private Instant timestamp;
 
     public ErrorResponse(String message) {
         success = false;
         this.message = message;
-        timestamp = LocalDateTime.now();
+        timestamp = Instant.now();
     }
 
     public boolean isSuccess() {
@@ -22,7 +22,7 @@ public class ErrorResponse {
         return message;
     }
 
-    public LocalDateTime getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 
