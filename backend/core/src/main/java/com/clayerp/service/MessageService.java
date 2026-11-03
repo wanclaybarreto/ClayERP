@@ -21,14 +21,17 @@ public class MessageService {
         return messageSource.getMessage(
                 key,
                 params,
-                getDefaultMessage(key),
-                Locale.getDefault()
+                getDefaultMessage(key, locale),
+                locale
         );
     }
 
     public String getDefaultMessage(String key) {
-        return messageSource.getMessage("msg.notfound.for.key", null, Locale.getDefault())
-                + " \"" + key + "\".";
+        Locale locale = LocaleContextHolder.getLocale();
+        return getDefaultMessage(key, locale);
     }
 
+    private String getDefaultMessage(String key, Locale locale) {
+        return messageSource.getMessage("msg.notfound.for.key", null, locale) + " \"" + key + "\".";
+    }
 }
