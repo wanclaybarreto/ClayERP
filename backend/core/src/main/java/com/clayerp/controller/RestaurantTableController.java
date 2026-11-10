@@ -4,6 +4,7 @@ import com.clayerp.dto.ApiResponse;
 import com.clayerp.dto.CreateRestaurantTableRequest;
 import com.clayerp.dto.CreateRestaurantTableResponse;
 import com.clayerp.service.RestaurantTableService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,13 @@ public class RestaurantTableController {
     }
 
     @PostMapping
-    public ApiResponse<CreateRestaurantTableResponse> create(@RequestBody CreateRestaurantTableRequest crtRequest) {
-        return new ApiResponse<>(true, restaurantTableService.createRestaurantTable(crtRequest));
+    public ApiResponse<CreateRestaurantTableResponse> create(
+            @Valid @RequestBody CreateRestaurantTableRequest crtRequest
+    ) {
+        return new ApiResponse<>(
+                true,
+                restaurantTableService.createRestaurantTable(crtRequest)
+        );
     }
 
 }
